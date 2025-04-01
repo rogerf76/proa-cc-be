@@ -1,12 +1,15 @@
 import { Controller, Get } from '@nestjs/common';
-import { MapdataService, PropertyLocation } from './mapdata.service';
+import { MapdataService, PropertyLocationRecord } from './mapdata.service';
+
+import { sql } from '@vercel/postgres';
+
 
 @Controller('mapdata')
 export class MapdataController {
-  constructor(private readonly mapdataService: MapdataService) {}
+    constructor(private readonly mapdataService: MapdataService) { }
 
-  @Get()
-  getProperties(): PropertyLocation[] {
-    return this.mapdataService.getProperties();
-  }
+    @Get()
+    async getProperties(): Promise<PropertyLocationRecord[]> {
+        return this.mapdataService.getProperties();
+    }
 }
