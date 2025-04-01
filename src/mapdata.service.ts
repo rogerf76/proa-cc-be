@@ -14,8 +14,24 @@ export interface PropertyLocationRecord {
 
 @Injectable()
 export class MapdataService {
-    async getProperties(): Promise<PropertyLocationRecord[]> {
-        const result = await sql`
+    async getProperties(state?: string): Promise<PropertyLocationRecord[]> {
+        var result;
+        // There is probably a neater way to do this but out of time
+        if (state) {
+            result = await sql`
+            SELECT 
+                id,
+                ws_name,
+                site,
+                portfolio,
+                state,
+                latitude,
+                longitude
+            FROM property_locations
+            WHERE state = ${state}
+        `;
+        } else {
+            result = await sql`
             SELECT 
                 id,
                 ws_name,
@@ -26,6 +42,7 @@ export class MapdataService {
                 longitude
             FROM property_locations
         `;
+        }
 
         return result.rows.map(row => ({
             id: row.id,
