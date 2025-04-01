@@ -1,8 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { MapdataService, PropertyLocationRecord } from './mapdata.service';
 
-import { sql } from '@vercel/postgres';
-
 
 @Controller('mapdata')
 export class MapdataController {
