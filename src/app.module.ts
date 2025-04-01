@@ -8,12 +8,12 @@ import { config } from 'dotenv';
 
 // Load Environment Variables
 config({
-  path: ['.env', '.env.production', '.env.local'],
+    path: ['.env', '.env.production', '.env.local'],
 });
 
 @Module({
-  imports: [],
-  controllers: [AppController, MapdataController],
-  providers: [AppService, MapdataService],
+    imports: [],
+    controllers: [AppController, MapdataController],
+    providers: [AppService, MapdataService],
 })
-export class AppModule {}
+export class AppModule { }
