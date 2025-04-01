@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MapdataController } from './mapdata.controller';
 import { MapdataService } from './mapdata.service';
+import { MeasurementsController } from './measurements.controller';
+import { MeasurementsService } from './measurements.service';
 
 import { config } from 'dotenv';
 
@@ -13,7 +15,7 @@ config({
 
 @Module({
     imports: [],
-    controllers: [AppController, MapdataController],
-    providers: [AppService, MapdataService],
+    controllers: [AppController, MapdataController, MeasurementsController],
+    providers: [AppService, MapdataService, MeasurementsService],
 })
 export class AppModule { }
